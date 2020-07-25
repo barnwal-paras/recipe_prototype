@@ -1,13 +1,22 @@
 import React, { useEffect, useState } from "react";
-import "./styles.css";
+import "./App.css";
 
-const Recipe = props => {
-  const title = props;
+const Recipe = ({ recipe }) => {
+  console.log({ recipe });
+  const title = recipe.recipe.label;
+  const calorie = recipe.recipe.calories;
+  const image = recipe.recipe.image;
+  const ingredients = recipe.recipe.ingredients;
   return (
-    <div>
-      <div>Title</div>
-      <p>Calories</p>
-      <img src="" alt="" />
+    <div className="recipe">
+      <h1>{title}</h1>
+      <ol>
+        {ingredients.map(ingredient => (
+          <li>{ingredient.text}</li>
+        ))}
+      </ol>
+      <p>{calorie}</p>
+      <img src={image} alt="" />
     </div>
   );
 };
